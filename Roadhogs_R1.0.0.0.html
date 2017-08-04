@@ -1,0 +1,69 @@
+<HTML>
+<head>
+	
+	<link rel="stylesheet" href="http://www.w3schools.com/lib/w3.css">
+	<script src="https://www.w3schools.com/lib/w3.js"></script>
+	
+	<link rel="stylesheet" href="http://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+	<link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+	<script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+	<script type="text/javascript">
+	
+  google.charts.load('current', {packages: ['corechart', 'table']});
+  google.charts.setOnLoadCallback(drawChart);
+
+	function drawChart() {
+		var URL = 'https://docs.google.com/spreadsheets/d/1sOfxY3ihWcMDiRg2BTnH_FWeyEgQRFAhxqusr2PtaVM/edit#gid=0';
+		var queryString='&range=A:G';
+		var query = new google.visualization.Query(URL+queryString);
+		query.send(handleQueryResponse);
+	}
+	
+	function handleQueryResponse(response) {
+		var data = response.getDataTable();
+		var chart = new google.visualization.Table(document.getElementById('pointsChart'));
+		chart.draw(data, null);
+	}
+</script>
+<style>
+	.main{
+		
+	}
+	.logo {
+		height:32px;
+		width:32px;
+	}
+	.menu {
+		max-width:250px;
+	}
+</style>
+</head>
+                                                  
+<body onresize="onResize();" onload="onResize();">
+<div class="w3-bar w3-white">
+	<span class="w3-bar-item menu"><img src="https://github.com/alljetnopilot/Roadhogs/blob/master/RoadHogs1.jpg?raw=true" class="logo"></span>
+	<span class="w3-bar-item menu">ROADHOGS HOCKEY CLUB</span>
+</div>
+<div class="w3-bar w3-green">
+  <a href="" class="w3-bar-item w3-button w3-hover-white" onclick="">Home</a>
+  <a href="" class="w3-bar-item w3-button w3-hover-white">Schedule</a>
+  <a href="" class="w3-bar-item w3-button w3-hover-white">Stats</a>
+  <a href="" class="w3-bar-item w3-button w3-hover-white w3-hide" >Tabs</a>
+</div>
+
+<div id="mainContainer" class="w3-container" height="100%">
+	<div id="schedule main">
+		<iframe id="calendar" src="https://calendar.google.com/calendar/embed?title=Road%20Hogs%20Hockey%20Schedule&amp&amp;showTitle=0;showNav=0&amp;showDate=0&amp;showPrint=0&amp;showCalendars=0&amp;mode=AGENDA&amp;height=400&amp;wkst=2&amp;bgcolor=%23ffffff&amp;src=michaelatkinson.ca_9kb8q3i4b9cjrdv3hpr29pin08%40group.calendar.google.com&amp;color=%238C500B&amp;ctz=America%2FVancouver" style="border-width:0" width="100%" height="400px" frameborder="0" scrolling="no"></iframe>
+	</div>
+	<div id="pointsChart main"></div>
+	
+</div>
+<script>
+	function onResize() {
+		var cal = document.getElementById("calendar");
+		cal.height = window.outerHeight-200;
+		cal.width = window.outerWidth;
+	}
+</script>
+</body>
+</HTML>
